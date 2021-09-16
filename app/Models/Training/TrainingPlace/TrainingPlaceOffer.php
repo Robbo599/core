@@ -24,7 +24,7 @@ class TrainingPlaceOffer extends Model
         'training_position_id',
         'accepted_at',
         'declined_at',
-        'declined_reason'
+        'declined_reason',
     ];
 
     public $dates = ['expires_at', 'accepted_at', 'declined_at', 'reminder_sent_at'];
@@ -34,7 +34,7 @@ class TrainingPlaceOffer extends Model
         return $this->belongsTo(Account::class);
     }
 
-    public function offeringAccount() : BelongsTo
+    public function offeringAccount(): BelongsTo
     {
         return $this->belongsTo(Account::class, 'offered_by');
     }

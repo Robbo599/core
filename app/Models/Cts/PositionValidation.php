@@ -19,7 +19,7 @@ class PositionValidation extends Model
         'position_id',
         'status',
         'changed_by',
-        'date_changed'
+        'date_changed',
     ];
 
     public function position()

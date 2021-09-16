@@ -2,12 +2,12 @@
 
 namespace App\Notifications\Training;
 
+use App\Models\Training\TrainingPlace\TrainingPlaceOffer as TrainingPlaceOfferModel;
 use Illuminate\Bus\Queueable;
-use Illuminate\Support\Carbon;
-use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
-use App\Models\Training\TrainingPlace\TrainingPlaceOffer as TrainingPlaceOfferModel;
+use Illuminate\Notifications\Notification;
+use Illuminate\Support\Carbon;
 
 class TrainingPlaceOffer extends Notification implements ShouldQueue
 {
@@ -51,7 +51,7 @@ class TrainingPlaceOffer extends Notification implements ShouldQueue
                         'recipientName' => $notifiable->name,
                         'expiry' => Carbon::parse($this->trainingPlaceOffer->expires_at)->toRfc850String(),
                         'station' => $this->trainingPlaceOffer->trainingPosition->station,
-                        'offerId' => $this->trainingPlaceOffer->offer_id
+                        'offerId' => $this->trainingPlaceOffer->offer_id,
                     ]);
     }
 

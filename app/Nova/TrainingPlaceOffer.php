@@ -2,13 +2,10 @@
 
 namespace App\Nova;
 
-use App\Nova\Account;
-use App\Nova\TrainingPosition;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Panel;
 
 class TrainingPlaceOffer extends Resource
@@ -64,8 +61,8 @@ class TrainingPlaceOffer extends Resource
                 DateTime::make('Expires At')->format($this->dateFormat),
                 DateTime::make('Accepted At')->format($this->dateFormat),
                 DateTime::make('Declined At')->format($this->dateFormat),
-                DateTime::make('Reminder Sent At')->format($this->dateFormat)
-            ])
+                DateTime::make('Reminder Sent At')->format($this->dateFormat),
+            ]),
         ];
     }
 

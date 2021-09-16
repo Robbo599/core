@@ -11,9 +11,10 @@ class TrainingPlaceCounts extends Partition
 {
     /**
      * Generate a count metric for a group of training places.
+     *
      * @return int
      */
-    private function generateGroupMetric(string $callsignMatch) : int
+    private function generateGroupMetric(string $callsignMatch): int
     {
         return TrainingPlace::with('trainingPosition')->whereHas('trainingPosition.station', function (Builder $builder) use ($callsignMatch) {
             $builder->where('callsign', 'like', $callsignMatch);
@@ -38,7 +39,7 @@ class TrainingPlaceCounts extends Partition
     /**
      * Determine for how many minutes the metric should be cached.
      *
-     * @return  \DateTimeInterface|\DateInterval|float|int
+     * @return \DateTimeInterface|\DateInterval|float|int
      */
     public function cacheFor()
     {

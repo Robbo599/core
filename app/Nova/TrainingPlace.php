@@ -5,7 +5,6 @@ namespace App\Nova;
 use App\Nova\Actions\RemoveTrainingPlaceExamPass;
 use App\Nova\Actions\RevokeTrainingPlace;
 use App\Nova\Metrics\TrainingPlaceCounts;
-use App\Nova\TrainingPosition;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
@@ -50,7 +49,7 @@ class TrainingPlace extends Resource
 
             BelongsTo::make('Account'),
 
-            BelongsTo::make('Position', 'trainingPosition', TrainingPosition::class)
+            BelongsTo::make('Position', 'trainingPosition', TrainingPosition::class),
         ];
     }
 

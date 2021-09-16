@@ -27,7 +27,7 @@ class TrainingPlaceOfferFactory extends Factory
     {
         return [
             'offer_id' => Uuid::uuid4()->toString(),
-            'training_position_id' => function() {
+            'training_position_id' => function () {
                 return TrainingPosition::factory()->create()->id;
             },
             'account_id' => factory(Account::class)->create()->id,

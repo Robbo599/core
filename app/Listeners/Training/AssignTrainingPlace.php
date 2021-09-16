@@ -4,8 +4,6 @@ namespace App\Listeners\Training;
 
 use App\Events\Training\TrainingPlaceAccepted;
 use App\Models\Training\TrainingPlace;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
 
 class AssignTrainingPlace
 {
@@ -15,7 +13,7 @@ class AssignTrainingPlace
      * @param  TrainingPlaceAccepted  $event
      * @return void
      */
-    public function handle(TrainingPlaceAccepted $event) : void
+    public function handle(TrainingPlaceAccepted $event): void
     {
         $offer = $event->getOffer();
 
@@ -23,7 +21,7 @@ class AssignTrainingPlace
             'training_position_id' => $offer->training_position_id,
             'account_id' => $offer->account_id,
             'offer_id' => $offer->offer_id,
-            'accepted_at' => $offer->accepted_at
+            'accepted_at' => $offer->accepted_at,
         ]);
     }
 }

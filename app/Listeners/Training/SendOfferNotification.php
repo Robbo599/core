@@ -2,8 +2,6 @@
 
 namespace App\Listeners\Training;
 
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use App\Events\Training\TrainingPlaceOffered;
 use App\Notifications\Training\TrainingPlaceOffer as TrainingPlaceOfferNotification;
 

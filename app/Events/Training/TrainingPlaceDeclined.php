@@ -3,10 +3,6 @@
 namespace App\Events\Training;
 
 use App\Models\Training\TrainingPlace\TrainingPlaceOffer;
-use Illuminate\Broadcasting\Channel;
-use Illuminate\Broadcasting\PresenceChannel;
-use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
@@ -26,7 +22,7 @@ class TrainingPlaceDeclined
         $this->trainingPlaceOffer = $trainingPlaceOffer;
     }
 
-    public function getOffer() : TrainingPlaceOffer
+    public function getOffer(): TrainingPlaceOffer
     {
         return $this->trainingPlaceOffer;
     }

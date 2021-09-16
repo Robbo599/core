@@ -70,7 +70,7 @@ class TrainingPlaceOfferUserTest extends TestCase
     {
         $trainingPlaceOffer = TrainingPlaceOffer::factory()->create(['expires_at' => $this->knownDate->addDays(1), 'account_id' => $this->user->id]);
 
-        Event::fakeFor(function() use ($trainingPlaceOffer) {
+        Event::fakeFor(function () use ($trainingPlaceOffer) {
             $this->actingAs($this->user)
                 ->post("training/offer/{$trainingPlaceOffer->offer_id}/decline", ['declined_reason' => 'foo'])
                 ->assertRedirect(route('mship.manage.dashboard'))

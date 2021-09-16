@@ -3,8 +3,6 @@
 namespace App\Listeners\Training;
 
 use App\Events\Training\TrainingPlaceDeclined;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
 
 class SendInstructorTrainingPlaceDeclinedNotification
 {

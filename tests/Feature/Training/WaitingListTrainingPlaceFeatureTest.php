@@ -109,6 +109,6 @@ class WaitingListTrainingPlaceFeatureTest extends TestCase
     /** @test */
     public function testReturns400WhenTriesToOfferTrainingPlaceWhenOffersStillPending()
     {
-       // TODO
+        // TODO
     }
 }

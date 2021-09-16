@@ -43,7 +43,7 @@ class AuthServiceProvider extends ServiceProvider
         Account::class => AccountPolicy::class,
         Qualification::class => QualificationPolicy::class,
         Feedback::class => FeedbackPolicy::class,
-        TrainingPlaceOffer::class => TrainingPlaceOfferPolicy::class
+        TrainingPlaceOffer::class => TrainingPlaceOfferPolicy::class,
     ];
 
     /**

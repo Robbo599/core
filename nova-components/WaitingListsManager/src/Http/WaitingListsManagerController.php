@@ -73,11 +73,11 @@ class WaitingListsManagerController extends Controller
     public function getAvailablePlaces(WaitingList &$waitingList)
     {
         return response()->json([
-            'places' => TrainingPosition::availablePlacesForWaitingList($waitingList)
+            'places' => TrainingPosition::availablePlacesForWaitingList($waitingList),
         ]);
     }
 
-    public function offerTrainingPlace(WaitingList &$waitingList, TrainingPosition $trainingPosition, Request $request) : JsonResponse
+    public function offerTrainingPlace(WaitingList &$waitingList, TrainingPosition $trainingPosition, Request $request): JsonResponse
     {
         try {
             $account = Account::findOrFail($request->get('account_id'));
@@ -85,7 +85,7 @@ class WaitingListsManagerController extends Controller
             return response()->json(['message' => 'Account not found'], 400);
         }
 
-        if (!$this->getWaitingListAccounts($waitingList, true)->pluck('id')->contains($account->id)) {
+        if (! $this->getWaitingListAccounts($waitingList, true)->pluck('id')->contains($account->id)) {
             return response()->json(['message' => 'Account not eligible for training place.'], 403);
         }
 

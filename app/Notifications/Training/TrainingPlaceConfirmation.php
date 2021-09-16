@@ -4,7 +4,6 @@ namespace App\Notifications\Training;
 
 use App\Models\Training\TrainingPlace\TrainingPlaceOffer;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
@@ -48,7 +47,7 @@ class TrainingPlaceConfirmation extends Notification
                     ->subject('Training Place Confirmation')
                     ->view('emails.training-place.confirmation', [
                         'recipientName' => $notifiable->name,
-                        'station' => $this->trainingPlaceOffer->trainingPosition->station
+                        'station' => $this->trainingPlaceOffer->trainingPosition->station,
                     ]);
     }
 }

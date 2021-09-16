@@ -30,12 +30,12 @@ class TrainingPosition extends Model
         return $this->belongsTo(WaitingList::class);
     }
 
-    public function ctsPosition() : BelongsTo
+    public function ctsPosition(): BelongsTo
     {
         return $this->belongsTo(Position::class, 'cts_position_id');
     }
 
-    public function trainingPlaceOffers() : HasMany
+    public function trainingPlaceOffers(): HasMany
     {
         return $this->hasMany(TrainingPlaceOffer::class);
     }

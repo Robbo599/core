@@ -218,7 +218,7 @@ Route::group([
     'prefix' => 'training',
     'namespace' => 'Training',
     'middleware' => 'auth_full_group',
-], function() {
+], function () {
     Route::get('offer/{trainingPlaceOffer}/view')->uses('TrainingPlaceOfferController@view')->name('offer.view');
     Route::post('offer/{trainingPlaceOffer}/accept')->uses('TrainingPlaceOfferController@accept')->name('offer.accept');
     Route::post('offer/{trainingPlaceOffer}/decline')->uses('TrainingPlaceOfferController@decline')->name('offer.decline');

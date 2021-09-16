@@ -2,11 +2,6 @@
 
 namespace App\Events\Training;
 
-use Illuminate\Broadcasting\Channel;
-use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Broadcasting\PresenceChannel;
-use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
@@ -28,12 +23,12 @@ class TrainingPlaceRevoked
         $this->reason = $reason;
     }
 
-    public function getReason() : string
+    public function getReason(): string
     {
         return $this->reason;
     }
 
-    public function getTrainingPlace() : TrainingPlace
+    public function getTrainingPlace(): TrainingPlace
     {
         return $this->trainingPlace;
     }

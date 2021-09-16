@@ -26,7 +26,7 @@ class StudentRepository
         return $this->format($students->unique());
     }
 
-    public function grantTrainingPlacePermission(TrainingPosition $trainingPosition, Account $account) : bool
+    public function grantTrainingPlacePermission(TrainingPosition $trainingPosition, Account $account): bool
     {
         $trainingPosition = $trainingPosition->load('ctsPosition');
         try {
@@ -45,7 +45,7 @@ class StudentRepository
             'member_id' => $ctsMember->id,
             'type' => Membership::TYPE_HOME, // add the student as a 'home' member of the RTS.
             'joined' => Carbon::now()->format($dateGroup),
-            'confirmed' => Carbon::now()->format($dateGroup)
+            'confirmed' => Carbon::now()->format($dateGroup),
         ]);
 
         return PositionValidation::create([

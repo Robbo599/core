@@ -3,8 +3,6 @@
 namespace App\Listeners\Training;
 
 use App\Events\Training\TrainingPlaceAccepted;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
 
 class SendInstructorTrainingPlaceAcceptanceNotification
 {

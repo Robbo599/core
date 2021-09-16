@@ -8,7 +8,6 @@ use App\Http\Controllers\BaseController;
 use App\Models\Training\TrainingPlace\TrainingPlaceOffer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Redirect;
 
 class TrainingPlaceOfferController extends BaseController
@@ -37,12 +36,12 @@ class TrainingPlaceOfferController extends BaseController
         $this->authorize('update', $trainingPlaceOffer);
 
         $validated = $request->validate([
-            'declined_reason' => 'required|string'
+            'declined_reason' => 'required|string',
         ]);
 
         $trainingPlaceOffer->update([
             'declined_at' => Carbon::now(),
-            'declined_reason' => $validated['declined_reason']
+            'declined_reason' => $validated['declined_reason'],
         ]);
 
         event(new TrainingPlaceDeclined($trainingPlaceOffer));
