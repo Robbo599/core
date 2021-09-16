@@ -5,11 +5,13 @@
                 title="Eligible Waiting List (EWL)"
                 :accounts="eligibleAccounts"
                 :type="type"
+                :eligible-list="true"
                 @removeAccount="removeAccount"
                 @deferAccount="deferAccount"
                 @activeAccount="activeAccount"
                 @changeNote="openNotesModal"
                 @changeFlag="openFlagChangeModal"
+                @offerPlace="openTrainingPlaceModal"
             />
             <bucket
                 title="Master Waiting List (MWL)"
@@ -35,6 +37,12 @@
                 @close="closeNotesModal"
                 :account="selectedAccount"
             />
+            <offer-training-place-modal
+                v-if="trainingPlaceModalOpen"
+                :waitingList="resourceId"
+                @submit="offerTrainingPlace"
+                @close="() => trainingPlaceModalOpen = false"
+            />
         </portal>
     </div>
 </template>
@@ -43,8 +51,7 @@
     import { EventBus } from '../eventBus'
     export default {
         props: ['resourceName', 'resourceId', 'panel'],
-
-        data() {
+     data() {
             return {
                 loaded: false,
                 normalAccounts: null,
@@ -53,14 +60,14 @@
                 flagConfirmModalOpen: false,
                 notesModalOpen: false,
                 selectedFlag: null,
-                selectedAccount: null
+                selectedAccount: null,
+                trainingPlaceModalOpen: false,
             }
         },
 
         mounted() {
             this.loadAccounts()
 
-            console.log(this.panel.fields[0].type)
             // required to detect any changes in the other buckets which might be present on the page.
             EventBus.$on('list-changed', this.loadAccounts)
         },
@@ -115,6 +122,11 @@
                         EventBus.$emit('list-changed')
                     }
                 )
+            },
+
+            openTrainingPlaceModal(selected) {
+                this.selectedAccount = selected.account
+                this.trainingPlaceModalOpen = true;
             },
 
             openFlagChangeModal(selected) {
@@ -175,4 +187,5 @@
             }
         }
     }
+
 </script>

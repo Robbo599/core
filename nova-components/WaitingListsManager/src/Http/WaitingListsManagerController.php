@@ -4,12 +4,17 @@ namespace Vatsimuk\WaitingListsManager\Http;
 
 use App\Events\Training\AccountChangedStatusInWaitingList;
 use App\Models\Mship\Account;
+use App\Models\Training\TrainingPlace\TrainingPosition;
 use App\Models\Training\WaitingList;
 use App\Models\Training\WaitingList\WaitingListAccount;
 use App\Models\Training\WaitingList\WaitingListStatus;
+use App\Services\Training\OfferTrainingPlace;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class WaitingListsManagerController extends Controller
 {

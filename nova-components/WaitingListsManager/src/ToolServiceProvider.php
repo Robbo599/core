@@ -2,6 +2,7 @@
 
 namespace Vatsimuk\WaitingListsManager;
 
+use App\Models\Training\TrainingPlace\TrainingPosition;
 use App\Models\Training\WaitingList;
 use App\Models\Training\WaitingList\WaitingListAccount;
 use App\Models\Training\WaitingList\WaitingListAccountFlag;
@@ -40,6 +41,7 @@ class ToolServiceProvider extends ServiceProvider
         Route::model('waitingList', WaitingList::class);
         Route::model('waitingListAccount', WaitingListAccount::class);
         Route::model('waitingListAccountFlag', WaitingListAccountFlag::class);
+        Route::model('trainingPosition', TrainingPosition::class);
 
         if ($this->app->routesAreCached()) {
             return;
