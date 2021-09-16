@@ -18,6 +18,23 @@ class TrainingEventServiceProvider extends ServiceProvider
         \App\Events\Training\AccountNoteChanged::class => [
             \App\Listeners\Training\WaitingList\LogNoteChanged::class,
         ],
+        \App\Events\Training\TrainingPlaceOffered::class => [
+            \App\Listeners\Training\SendOfferNotification::class
+        ],
+        \App\Events\Training\TrainingPlaceAccepted::class => [
+            \App\Listeners\Training\AssignTrainingPlace::class,
+            \App\Listeners\Training\SendTrainingPlaceConfirmationMail::class,
+            \App\Listeners\Training\SendInstructorTrainingPlaceAcceptanceNotification::class
+        ],
+        \App\Events\Training\TrainingPlaceDeclined::class => [
+            \App\Listeners\Training\SendInstructorTrainingPlaceDeclinedNotification::class
+        ],
+        \App\Events\Training\TrainingPlaceCompleted::class => [
+
+        ],
+        \App\Events\Training\TrainingPlaceRevoked::class => [
+
+        ],
     ];
 
     /**

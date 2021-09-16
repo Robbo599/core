@@ -85,6 +85,8 @@ class WaitingList extends Resource
             HasMany::make('Flags', 'flags', WaitingListFlag::class)
                 ->canSeeWhen('addFlags', $this),
 
+            HasMany::make('Active Training Place Offers', 'activeTrainingPlaceOffers', TrainingPlaceOffer::class),
+
             WaitingListsManager::make()->withMeta(['type' => $this->department]),
         ];
     }

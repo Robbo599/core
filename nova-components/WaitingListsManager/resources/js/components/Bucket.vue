@@ -61,6 +61,9 @@
                             @changeFlag="changeFlag"
                         ></flag-indicator>
                     </td>
+                    <td v-if="eligibleList" class="flex justify-around items-center">
+                        <button class="btn btn-sm btn-outline" @click="offerPlace(account.id)">Offer</button>
+                    </td>
                     <td>
                         <div class="flex justify-around">
                             <button class="cursor-pointer text-70 hover:text-primary mr-3"

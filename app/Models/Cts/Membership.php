@@ -12,6 +12,9 @@ class Membership extends Model
     public $timestamps = false;
     public $incrementing = false;
 
+    public const TYPE_HOME = 'H';
+    public const TYPE_VISITING = 'V';
+
     public function member()
     {
         return $this->belongsTo(Member::class, 'member_id', 'id');

@@ -65,6 +65,38 @@ class WaitingListsManagerController extends Controller
         return [];
     }
 
+    public function getAvailablePlaces(WaitingList &$waitingList)
+    {
+        return response()->json([
+            'places' => TrainingPosition::availablePlacesForWaitingList($waitingList)
+        ]);
+    }
+
+    public function offerTrainingPlace(WaitingList &$waitingList, TrainingPosition $trainingPosition, Request $request) : JsonResponse
+    {
+        try {
+            $account = Account::findOrFail($request->get('account_id'));
+        } catch (ModelNotFoundException $e) {
+            return response()->json(['message' => 'Account not found'], 400);
+        }
+
+        if (!$this->getWaitingListAccounts($waitingList, true)->pluck('id')->contains($account->id)) {
+            return response()->json(['message' => 'Account not eligible for training place.'], 403);
+        }
+
+        if ($trainingPosition->places < $trainingPosition->trainingPlaces->count() + $trainingPosition->trainingPlaceOffers->count() == $trainingPosition->places) {
+            return response()->json(['message' => 'Offers still pending.'], 400);
+        }
+
+        handleService(new OfferTrainingPlace(
+            $trainingPosition,
+            $account,
+            Auth::user()
+        ));
+
+        return response()->json([], 201);
+    }
+
     private function findWaitingListAccount(Account &$account, WaitingList &$waitingList): WaitingListAccount
     {
         return $account->waitingLists

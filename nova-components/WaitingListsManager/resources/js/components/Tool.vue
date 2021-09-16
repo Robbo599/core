@@ -156,6 +156,22 @@
 
                     EventBus.$emit('list-changed')
                 })
+            },
+
+            offerTrainingPlace({ position }) {
+                Nova.request().post(`/nova-vendor/waiting-lists-manager/waitingLists/${this.resourceId}/position/${position}/offer`, {
+                    account_id: this.selectedAccount
+                }).then(() => {
+                    this.trainingPlaceModalOpen = false;
+
+                    this.$toasted.show('Training place offered.', { type: 'success' })
+
+                    EventBus.$emit('list-changed')
+                }).catch((response) => {
+                    if (response) {
+                        this.$toasted.show('No available places due to pending offers still active', { type: 'error'})
+                    }
+                })
             }
         }
     }

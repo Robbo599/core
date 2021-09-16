@@ -4,6 +4,8 @@ namespace App\Models\Training;
 
 use App\Events\Training\WaitingListCreated;
 use App\Models\Mship\Account;
+use App\Models\Training\TrainingPlace\TrainingPlaceOffer;
+use App\Models\Training\TrainingPlace\TrainingPosition;
 use App\Models\Training\WaitingList\WaitingListAccount;
 use App\Models\Training\WaitingList\WaitingListFlag;
 use Carbon\Carbon;
@@ -135,6 +137,13 @@ class WaitingList extends Model
     {
         $waitingListAccount = $this->accounts()->where('account_id', $account->id)->first()->pivot;
         $waitingListAccount->delete();
+    }
+
+    public function activeTrainingPlaceOffers()
+    {
+        return $this->hasManyThrough(TrainingPlaceOffer::class, TrainingPosition::class)
+            ->where('expires_at', '>=', Carbon::now())
+            ->where('accepted_at', null);
     }
 
     public function isAtcList()

@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Mship\Account;
 use App\Models\Mship\Feedback\Feedback;
 use App\Models\Smartcars;
+use App\Models\Training\TrainingPlace\TrainingPlaceOffer;
 use App\Models\Training\WaitingList;
 use App\Models\VisitTransfer;
 use App\Nova\Qualification;
@@ -16,6 +17,7 @@ use App\Policies\Smartcars\ExercisePolicy;
 use App\Policies\Smartcars\PirepPolicy;
 use App\Policies\Training\WaitingListFlagsPolicy;
 use App\Policies\Training\WaitingListPolicy;
+use App\Policies\TrainingPlaceOfferPolicy;
 use App\Policies\VisitTransfer\ApplicationPolicy;
 use App\Policies\VisitTransfer\ReferencePolicy;
 use Gate;
@@ -41,6 +43,7 @@ class AuthServiceProvider extends ServiceProvider
         Account::class => AccountPolicy::class,
         Qualification::class => QualificationPolicy::class,
         Feedback::class => FeedbackPolicy::class,
+        TrainingPlaceOffer::class => TrainingPlaceOfferPolicy::class
     ];
 
     /**

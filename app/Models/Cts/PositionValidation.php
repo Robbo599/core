@@ -11,6 +11,17 @@ class PositionValidation extends Model
 
     public $timestamps = false;
 
+    public const CAN_REQUEST_STATUS = 1;
+    public const MENTOR_STATUS = 5;
+
+    protected $fillable = [
+        'member_id',
+        'position_id',
+        'status',
+        'changed_by',
+        'date_changed'
+    ];
+
     public function position()
     {
         return $this->belongsTo(Position::class, 'position_id', 'id');
@@ -23,6 +34,6 @@ class PositionValidation extends Model
 
     public function scopeMentors($query)
     {
-        return $query->where('status', '=', 5);
+        return $query->where('status', '=', self::MENTOR_STATUS);
     }
 }
